@@ -61,7 +61,7 @@ def create_train_dateset(file: str) -> str:
     datasimple = train_data.drop(['date', 'locale', 'description', 'dcoilwtico'], axis=1)
     datasimple = pd.get_dummies(datasimple, drop_first=True)
     datasimple['interpolated_dcoilwtico'] = datasimple['interpolated_dcoilwtico'].fillna(0)
-    datasimple.to_csv('/data/simpletrainset.csv', index=False, sep=';')
+    datasimple.to_csv(f'{file}\simpletrainset.csv', index=False, sep=';')
 
     # train dataset for XGBoost model
     xgbtrain = final_train.copy()
@@ -75,7 +75,7 @@ def create_train_dateset(file: str) -> str:
     valid_date = data_xgb['date'].unique()[-15:].tolist()
     data_xgb['is_train'] = data_xgb['date'].map(lambda x: x in train_date)
     data_xgb['is_valid'] = data_xgb['date'].map(lambda x: x in valid_date)
-    data_xgb.to_csv('/data/trainset.csv', index=False, sep=';')
+    data_xgb.to_csv(f'{file}/trainset.csv', index=False, sep=';')
 
 
     return '/data/trainset.csv'
@@ -131,7 +131,7 @@ def create_test_dateset(file):
     simpletestset = simpletestset.drop(['date', 'locale', 'description', 'dcoilwtico'], axis=1)
     simpletestset = pd.get_dummies(simpletestset, drop_first=True)
     simpletestset['interpolated_dcoilwtico'] = simpletestset['interpolated_dcoilwtico'].fillna(0)
-    simpletestset.to_csv('/data/simpletestset.csv', index=False, sep=';')
+    simpletestset.to_csv(f'{file}/simpletestset.csv', index=False, sep=';')
 
     # test dataset for XGBoost
     xgbtest = test_data.copy()
@@ -140,7 +140,7 @@ def create_test_dateset(file):
     test_xgb = pd.get_dummies(test_xgb, drop_first=True)
     test_xgb = pd.concat([tep_test, test_xgb], axis=1)
     test_xgb['interpolated_dcoilwtico'] = test_xgb['interpolated_dcoilwtico'].fillna(0)
-    test_xgb.to_csv('/data/testset.csv', index=False, sep=';')
+    test_xgb.to_csv(f'{file}/testset.csv', index=False, sep=';')
 
     return '/data/testset.csv'
 

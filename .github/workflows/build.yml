@@ -73,7 +73,9 @@ jobs:
       - name: Set up brane CLI
         if: ${{ steps.cache_brane.outputs.cache-hit == true }}
         run: |
-          cd ~/.brane
+          cd ~
+          cd brane
+          cp -iv ./contrib/config/infra-local.yml ./infra.yml
           sudo cp ./target/release/brane /usr/local/bin/brane
           sudo chmod +x /usr/local/bin/brane
           brane version

@@ -4,7 +4,7 @@ import unittest
 
 class TestStringMethods(unittest.TestCase):
     # local testing
-    def test_visualization(self):
+    def test_prediction(self):
         self.assertEqual(create_train_dateset('data'),'/data/trainset.csv')
         self.assertEqual(create_test_dateset('data'),'/data/testset.csv')
 if __name__=="__main__":

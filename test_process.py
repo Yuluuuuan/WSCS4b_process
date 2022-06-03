@@ -9,5 +9,5 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(create_test_dateset('data'), '/data/testset.csv')
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     unittest.main()

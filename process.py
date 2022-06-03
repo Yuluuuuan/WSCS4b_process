@@ -9,18 +9,18 @@ from datetime import datetime, date
 #def create_train_dateset(file):
 def create_train_dateset(file: str) -> str:
     df_train = pd.read_csv(f"{file}/train.csv")
-    df_train["date"] = pd.to_datetime(df_train.date)
+    df_train["date"] = pd.to_datetime(df_train["date"])
 
     df_store = pd.read_csv(f"{file}/stores.csv")
 
     df_tran = pd.read_csv(f"{file}/transactions.csv")
-    df_tran["date"] = pd.to_datetime(df_tran.date)
+    df_tran["date"] = pd.to_datetime(df_tran["date"])
 
     df_oil = pd.read_csv(f"{file}/oil.csv")
     df_oil["date"] = pd.to_datetime(df_oil.date)
 
     df_holiday = pd.read_csv(f"{file}/holidays_events.csv")
-    df_holiday["date"] = pd.to_datetime(df_holiday.date)
+    df_holiday["date"] = pd.to_datetime(df_holiday["date"])
 
     # missing data points in the daily oils data, processed by Linear Interpolation method
     # Reset index of oils dataframe

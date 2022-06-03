@@ -20,9 +20,8 @@ There are two functions in this package:
 
 `create_train_dateset(file: str)` \
 `rcreate_test_dateset(file: str)`\
-for . We can get corresponding results
-
-
+for data cleaning, feature engineering and so on.
+Finally, the corresponding train dataset and test dataset will be created to be used for model training and predicting. 
 
 You can `test` the package to get an overview of these functions and corresponding parameters:
 ```bash
